@@ -13,5 +13,11 @@ before_install:
   - echo "$DOCKER_PASSWORD" |  docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t kw212/react-test -f ./client/Dockerfile.dev ./client
 
- script:
+script:
   - docker run kw212/react-test npm test -- --coverage
+
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on:
+    branch: master
