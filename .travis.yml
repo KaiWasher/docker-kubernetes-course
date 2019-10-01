@@ -14,6 +14,7 @@ before_install:
   - gcloud config set project practical-proxy-254117
   - gcloud config set compute/zone us-central1-a
   - gcloud container clusters get-credentials multi-cluster
+  - docker logout
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t kw212/react-test -f ./client/Dockerfile.dev ./client
 
